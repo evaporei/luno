@@ -37,7 +37,7 @@ fn parse_expr(expr: Pair<Rule>) -> Result<ast::Expr, String> {
         Rule::Character => Ok(ast::Expr::Character(
             expr.as_str().chars().skip(1).next().unwrap(),
         )),
-        Rule::String => Ok(ast::Expr::String(expr.as_str().into())),
+        Rule::String => Ok(ast::Expr::String(expr.as_str().trim_matches('"').into())),
         Rule::Int => Ok(ast::Expr::Int(
             expr.as_str().parse::<i64>().map_err(|e| e.to_string())?,
         )),
