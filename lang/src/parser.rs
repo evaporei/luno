@@ -116,6 +116,7 @@ fn parse_expr(expr: Pair<Rule>) -> Result<ast::Expr, String> {
         }
         Rule::Program
         | Rule::EOI
+        | Rule::COMMENT
         | Rule::WHITESPACE
         | Rule::Inner
         | Rule::Char
