@@ -8,7 +8,6 @@ use pest::Parser as _;
 pub struct Parser;
 
 pub fn parse(source: &str) -> Result<ast::Program, pest::error::Error<Rule>> {
-    // List of Expressions.
     let pairs = Parser::parse(Rule::Program, source)?.next().unwrap();
 
     println!("pairs: {:?}", pairs);

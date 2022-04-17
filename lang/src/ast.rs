@@ -9,7 +9,7 @@ pub type Keyword = String;
 pub type Symbol = String;
 // String is the Rust one;
 pub type Map = BTreeMap<Expr, Expr>;
-pub type List = Vec<Expr>;
+pub type List = Vec<Expr>; // Maybe use VecDeque
 pub type SExpr = Vec<Expr>;
 
 #[derive(Debug, PartialOrd, PartialEq, Eq, Ord)]
