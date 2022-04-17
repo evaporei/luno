@@ -53,11 +53,20 @@ fn parse_expr(expr: Pair<Rule>) -> Result<ast::Expr, String> {
         Rule::Character => Ok(ast::Expr::Character(
             expr.as_str().chars().skip(1).next().unwrap(),
         )),
-        Rule::Keyword => Ok(ast::Expr::Keyword(
-            expr.as_str().trim_start_matches(':').into(),
-        )),
+        Rule::Keyword => {
+            let mut expr_str = expr.as_str().to_string();
+            expr_str.remove(0); // :
+
+            Ok(ast::Expr::Keyword(expr_str))
+        }
         Rule::Symbol => Ok(ast::Expr::Symbol(expr.as_str().into())),
-        Rule::String => Ok(ast::Expr::String(expr.as_str().trim_matches('"').into())),
+        Rule::String => {
+            let mut expr_str = expr.as_str().to_string();
+            expr_str.pop(); // remove ending "
+            expr_str.remove(0); // remove starting "
+
+            Ok(ast::Expr::String(expr_str))
+        }
         Rule::SExpr => {
             let mut sexpr = ast::SExpr::new();
 
