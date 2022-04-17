@@ -1,19 +1,11 @@
 WHITESPACE = _{ (" " | "\t" | "\r" | "\n" ) }
 
-// Symbol = @{ (Letter ~ Char*?) | (ArithmeticOps | ComparisonOps) }
-Symbol = @{ (Letter | ASCII_DIGIT | "_" | ArithmeticOps | ComparisonOps | "&")+ }
-Letter = { 'a' .. 'z' | 'A' .. 'Z' }
-ArithmeticOps = { "+" | "-" | "*" | "/" | "%" | "^" }
-ComparisonOps = { "=" | "<" | ">" | "!" }
-
-Character = { "\\" ~ Char }
-
-String = ${ "\"" ~ Inner ~ "\"" }
-Inner = @{ Char* }
-Char = {
-    !("\"" | "\\") ~ ANY
-    | "\\" ~ ("\"" | "\\" | "/" | "b" | "f" | "n" | "r" | "t")
-    | "\\" ~ ("u" ~ ASCII_HEX_DIGIT{4})
+// 6.66
+Float = @{
+    "-"?
+    ~ ("0" | ASCII_NONZERO_DIGIT ~ ASCII_DIGIT*)
+    ~ ("." ~ ASCII_DIGIT*)
+    ~ (^"e" ~ ("+" | "-")? ~ ASCII_DIGIT+)?
 }
 
 // 42
@@ -23,18 +15,34 @@ Int = @{
     ~ (^"e" ~ ("+" | "-")? ~ ASCII_DIGIT+)?
 }
 
-// 6.66
-Float = @{
-    "-"?
-    ~ ("0" | ASCII_NONZERO_DIGIT ~ ASCII_DIGIT*)
-    ~ ("." ~ ASCII_DIGIT*)
-    ~ (^"e" ~ ("+" | "-")? ~ ASCII_DIGIT+)?
-}
-
 Bool = { "true" | "false" }
+
+Character = { "\\" ~ Char }
+
+// Symbol = @{ (Letter ~ Char*?) | (ArithmeticOps | ComparisonOps) }
+Symbol = @{ (Letter | ASCII_DIGIT | "_" | ArithmeticOps | ComparisonOps | "&")+ }
+Letter = { 'a' .. 'z' | 'A' .. 'Z' }
+ArithmeticOps = { "+" | "-" | "*" | "/" | "%" | "^" }
+ComparisonOps = { "=" | "<" | ">" | "!" }
+
+String = ${ "\"" ~ Inner ~ "\"" }
+Inner = @{ Char* }
+Char = {
+    !("\"" | "\\") ~ ANY
+    | "\\" ~ ("\"" | "\\" | "/" | "b" | "f" | "n" | "r" | "t")
+    | "\\" ~ ("u" ~ ASCII_HEX_DIGIT{4})
+}
 
 SExpr = { "(" ~ Expr* ~ ")" }
 
-Expr = { Float | Int | Bool | Character | Symbol | String | SExpr }
+Expr = {
+    Float
+    | Int
+    | Bool
+    | Character
+    | Symbol
+    | String
+    | SExpr
+}
 
 Program = { SOI ~ Expr* ~ EOI }

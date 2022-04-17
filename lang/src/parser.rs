@@ -34,16 +34,11 @@ fn parse_program(program: Pair<Rule>) -> Result<ast::Program, String> {
 fn parse_expr(expr: Pair<Rule>) -> Result<ast::Expr, String> {
     match expr.as_rule() {
         Rule::Expr => parse_expr(expr.into_inner().next().unwrap()),
-        Rule::Symbol => Ok(ast::Expr::Symbol(expr.as_str().into())),
-        Rule::Character => Ok(ast::Expr::Character(
-            expr.as_str().chars().skip(1).next().unwrap(),
-        )),
-        Rule::String => Ok(ast::Expr::String(expr.as_str().trim_matches('"').into())),
-        Rule::Int => Ok(ast::Expr::Int(
-            expr.as_str().parse::<i64>().map_err(|e| e.to_string())?,
-        )),
         Rule::Float => Ok(ast::Expr::Float(
             expr.as_str().parse::<f64>().map_err(|e| e.to_string())?,
+        )),
+        Rule::Int => Ok(ast::Expr::Int(
+            expr.as_str().parse::<i64>().map_err(|e| e.to_string())?,
         )),
         Rule::Bool => {
             let expr_str = expr.as_str();
@@ -55,6 +50,11 @@ fn parse_expr(expr: Pair<Rule>) -> Result<ast::Expr, String> {
 
             Ok(ast::Expr::Bool(b))
         }
+        Rule::Character => Ok(ast::Expr::Character(
+            expr.as_str().chars().skip(1).next().unwrap(),
+        )),
+        Rule::Symbol => Ok(ast::Expr::Symbol(expr.as_str().into())),
+        Rule::String => Ok(ast::Expr::String(expr.as_str().trim_matches('"').into())),
         Rule::SExpr => {
             let mut sexpr = ast::SExpr::new();
 
