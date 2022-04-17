@@ -15,7 +15,9 @@ Float = @{
     ~ (^"e" ~ ("+" | "-")? ~ ASCII_DIGIT+)?
 }
 
-Expr = { Float | Int }
+SExpr = { "(" ~ Expr* ~ ")" }
+
+Expr = { Float | Int | SExpr }
 
 // source_code.sol
 // ```

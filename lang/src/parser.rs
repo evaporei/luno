@@ -40,6 +40,19 @@ fn parse_expr(expr: Pair<Rule>) -> Result<ast::Expr, String> {
         Rule::Float => Ok(ast::Expr::Float(
             expr.as_str().parse::<f64>().map_err(|e| e.to_string())?,
         )),
+        Rule::SExpr => {
+            let mut sexpr = ast::SExpr::new();
+
+            for child in expr.into_inner() {
+                let c = child.as_str();
+                if c == "(" || c == ")" {
+                    continue;
+                }
+                sexpr.push(parse_expr(child)?);
+            }
+
+            Ok(ast::Expr::SExpr(sexpr))
+        }
         Rule::Program | Rule::EOI | Rule::WHITESPACE => unreachable!(),
     }
 }
