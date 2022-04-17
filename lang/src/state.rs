@@ -9,23 +9,19 @@ impl State {
 
     /// Loads the Sol's standard library into the State.
     // luaL_openlibs
-    pub fn load_std(&self) {
-    }
+    pub fn load_std(&self) {}
 
     /// Compiles a line.
     // luaL_loadstring
-    pub fn load_line(&self, _line: &str) {
-    }
+    pub fn load_line(&self, _line: &str) {}
 
     /// Calls the compiled function.
     // lua_pcall
-    pub fn call(&self) {
-    }
+    pub fn call(&self) {}
 }
 
 // FIXME: Perhaps this can be removed later.
 // lua_close
 impl Drop for State {
-    fn drop(&mut self) {
-    }
+    fn drop(&mut self) {}
 }

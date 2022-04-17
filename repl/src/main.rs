@@ -19,18 +19,18 @@ fn main() {
                 state.load_line(&line);
                 state.call();
                 println!("Line: {}", line);
-            },
+            }
             Err(ReadlineError::Interrupted) => {
                 println!("CTRL-C");
-                break
-            },
+                break;
+            }
             Err(ReadlineError::Eof) => {
                 println!("CTRL-D");
-                break
-            },
+                break;
+            }
             Err(err) => {
                 println!("Error: {:?}", err);
-                break
+                break;
             }
         }
     }
