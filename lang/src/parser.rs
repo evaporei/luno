@@ -1,4 +1,5 @@
 use crate::ast;
+use ordered_float::OrderedFloat;
 use pest::iterators::Pair;
 use pest::Parser as _;
 
@@ -34,9 +35,9 @@ fn parse_program(program: Pair<Rule>) -> Result<ast::Program, String> {
 fn parse_expr(expr: Pair<Rule>) -> Result<ast::Expr, String> {
     match expr.as_rule() {
         Rule::Expr => parse_expr(expr.into_inner().next().unwrap()),
-        Rule::Float => Ok(ast::Expr::Float(
+        Rule::Float => Ok(ast::Expr::Float(OrderedFloat(
             expr.as_str().parse::<f64>().map_err(|e| e.to_string())?,
-        )),
+        ))),
         Rule::Int => Ok(ast::Expr::Int(
             expr.as_str().parse::<i64>().map_err(|e| e.to_string())?,
         )),
@@ -66,6 +67,27 @@ fn parse_expr(expr: Pair<Rule>) -> Result<ast::Expr, String> {
             expr_str.remove(0); // remove starting "
 
             Ok(ast::Expr::String(expr_str))
+        }
+        Rule::Map => {
+            let mut map = ast::Map::new();
+
+            for child in expr.into_inner() {
+                let c = child.as_str();
+                if c == "{" || c == "}" {
+                    continue;
+                }
+
+                if child.as_rule() == Rule::Pair {
+                    let mut map_pair = child.into_inner();
+
+                    let expr1 = map_pair.next().unwrap();
+                    let expr2 = map_pair.next().unwrap();
+
+                    map.insert(parse_expr(expr1)?, parse_expr(expr2)?);
+                }
+            }
+
+            Ok(ast::Expr::Map(map))
         }
         Rule::List => {
             let mut list = ast::List::new();
@@ -100,6 +122,7 @@ fn parse_expr(expr: Pair<Rule>) -> Result<ast::Expr, String> {
         | Rule::Char
         | Rule::Letter
         | Rule::ArithmeticOps
-        | Rule::ComparisonOps => unreachable!(),
+        | Rule::ComparisonOps
+        | Rule::Pair => unreachable!(),
     }
 }

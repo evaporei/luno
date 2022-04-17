@@ -1,14 +1,18 @@
+use ordered_float::OrderedFloat;
+use std::collections::BTreeMap;
+
 pub type Int = i64;
-pub type Float = f64;
+pub type Float = OrderedFloat<f64>;
 pub type Bool = bool;
 pub type Character = char;
 pub type Keyword = String;
 pub type Symbol = String;
 // String is the Rust one;
+pub type Map = BTreeMap<Expr, Expr>;
 pub type List = Vec<Expr>;
 pub type SExpr = Vec<Expr>;
 
-#[derive(Debug)]
+#[derive(Debug, PartialOrd, PartialEq, Eq, Ord)]
 pub enum Expr {
     Int(Int),
     Float(Float),
@@ -17,6 +21,7 @@ pub enum Expr {
     Keyword(Keyword),
     Symbol(Symbol),
     String(String),
+    Map(Map),
     List(List),
     SExpr(SExpr),
 }

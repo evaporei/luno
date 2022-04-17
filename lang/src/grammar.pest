@@ -40,6 +40,13 @@ List = {
     | "[" ~ Expr* ~ "]"
 }
 
+Pair = { Expr ~ Expr }
+
+Map = {
+    "{" ~ "}"
+    | "{" ~ Pair* ~ "}"
+}
+
 SExpr = { "(" ~ Expr* ~ ")" }
 
 Expr = {
@@ -50,6 +57,7 @@ Expr = {
     | Keyword
     | Symbol
     | String
+    | Map
     | List
     | SExpr
 }
