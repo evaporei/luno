@@ -288,6 +288,7 @@ name = "sol-repl"
 version = "0.1.0"
 dependencies = [
  "rustyline",
+ "sol-lang",
 ]
 
 [[package]]

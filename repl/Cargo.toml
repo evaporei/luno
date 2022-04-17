@@ -7,3 +7,4 @@ edition = "2021"
 
 [dependencies]
 rustyline = "9.1.2"
+sol-lang = { path = "../lang" }
