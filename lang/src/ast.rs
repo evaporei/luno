@@ -8,6 +8,7 @@ pub type SExpr = Vec<Expr>;
 
 #[derive(Debug)]
 pub enum Expr {
+    String(String),
     Int(Int),
     Float(Float),
     Bool(Bool),

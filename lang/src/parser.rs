@@ -34,6 +34,7 @@ fn parse_program(program: Pair<Rule>) -> Result<ast::Program, String> {
 fn parse_expr(expr: Pair<Rule>) -> Result<ast::Expr, String> {
     match expr.as_rule() {
         Rule::Expr => parse_expr(expr.into_inner().next().unwrap()),
+        Rule::String => Ok(ast::Expr::String(expr.as_str().into())),
         Rule::Int => Ok(ast::Expr::Int(
             expr.as_str().parse::<i64>().map_err(|e| e.to_string())?,
         )),
@@ -63,6 +64,6 @@ fn parse_expr(expr: Pair<Rule>) -> Result<ast::Expr, String> {
 
             Ok(ast::Expr::SExpr(sexpr))
         }
-        Rule::Program | Rule::EOI | Rule::WHITESPACE => unreachable!(),
+        Rule::Program | Rule::EOI | Rule::WHITESPACE | Rule::Inner | Rule::Char => unreachable!(),
     }
 }
