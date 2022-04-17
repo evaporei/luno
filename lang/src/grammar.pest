@@ -35,6 +35,11 @@ Char = {
     | "\\" ~ ("u" ~ ASCII_HEX_DIGIT{4})
 }
 
+List = {
+    "[" ~ "]"
+    | "[" ~ Expr* ~ "]"
+}
+
 SExpr = { "(" ~ Expr* ~ ")" }
 
 Expr = {
@@ -45,6 +50,7 @@ Expr = {
     | Keyword
     | Symbol
     | String
+    | List
     | SExpr
 }
 

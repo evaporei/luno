@@ -67,6 +67,19 @@ fn parse_expr(expr: Pair<Rule>) -> Result<ast::Expr, String> {
 
             Ok(ast::Expr::String(expr_str))
         }
+        Rule::List => {
+            let mut list = ast::List::new();
+
+            for child in expr.into_inner() {
+                let c = child.as_str();
+                if c == "[" || c == "]" {
+                    continue;
+                }
+                list.push(parse_expr(child)?);
+            }
+
+            Ok(ast::Expr::List(list))
+        }
         Rule::SExpr => {
             let mut sexpr = ast::SExpr::new();
 

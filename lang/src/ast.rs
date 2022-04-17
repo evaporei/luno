@@ -5,6 +5,7 @@ pub type Character = char;
 pub type Keyword = String;
 pub type Symbol = String;
 // String is the Rust one;
+pub type List = Vec<Expr>;
 pub type SExpr = Vec<Expr>;
 
 #[derive(Debug)]
@@ -16,6 +17,7 @@ pub enum Expr {
     Keyword(Keyword),
     Symbol(Symbol),
     String(String),
+    List(List),
     SExpr(SExpr),
 }
 
