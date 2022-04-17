@@ -3,6 +3,8 @@ use rustyline::Editor;
 use sol_lang::State as SolState;
 
 fn main() {
+    println!("☀️  Sun lang 0.0.0");
+
     // TODO: add completer by replacing `()`
     let mut rl = Editor::<()>::new();
     // TODO: make history more robust?
@@ -35,4 +37,6 @@ fn main() {
         }
     }
     rl.save_history("history.txt").unwrap();
+
+    println!("☀️  Praise the sun \\o/");
 }
