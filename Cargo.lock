@@ -280,6 +280,10 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "f2dd574626839106c320a323308629dcb1acfc96e32a8cba364ddc61ac23ee83"
 
 [[package]]
+name = "sol-lang"
+version = "0.1.0"
+
+[[package]]
 name = "sol-repl"
 version = "0.1.0"
 dependencies = [
