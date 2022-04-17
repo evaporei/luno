@@ -2,6 +2,7 @@ pub type Int = i64;
 pub type Float = f64;
 pub type Bool = bool;
 pub type Character = char;
+pub type Keyword = String;
 pub type Symbol = String;
 // String is the Rust one;
 pub type SExpr = Vec<Expr>;
@@ -12,6 +13,7 @@ pub enum Expr {
     Float(Float),
     Bool(Bool),
     Character(Character),
+    Keyword(Keyword),
     Symbol(Symbol),
     String(String),
     SExpr(SExpr),

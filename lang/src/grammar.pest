@@ -19,6 +19,8 @@ Bool = { "true" | "false" }
 
 Character = { "\\" ~ Char }
 
+Keyword = @{ ":" ~ Symbol }
+
 // Symbol = @{ (Letter ~ Char*?) | (ArithmeticOps | ComparisonOps) }
 Symbol = @{ (Letter | ASCII_DIGIT | "_" | ArithmeticOps | ComparisonOps | "&")+ }
 Letter = { 'a' .. 'z' | 'A' .. 'Z' }
@@ -40,6 +42,7 @@ Expr = {
     | Int
     | Bool
     | Character
+    | Keyword
     | Symbol
     | String
     | SExpr

@@ -53,6 +53,9 @@ fn parse_expr(expr: Pair<Rule>) -> Result<ast::Expr, String> {
         Rule::Character => Ok(ast::Expr::Character(
             expr.as_str().chars().skip(1).next().unwrap(),
         )),
+        Rule::Keyword => Ok(ast::Expr::Keyword(
+            expr.as_str().trim_start_matches(':').into(),
+        )),
         Rule::Symbol => Ok(ast::Expr::Symbol(expr.as_str().into())),
         Rule::String => Ok(ast::Expr::String(expr.as_str().trim_matches('"').into())),
         Rule::SExpr => {
