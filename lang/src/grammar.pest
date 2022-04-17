@@ -15,14 +15,10 @@ Float = @{
     ~ (^"e" ~ ("+" | "-")? ~ ASCII_DIGIT+)?
 }
 
+Bool = { "true" | "false" }
+
 SExpr = { "(" ~ Expr* ~ ")" }
 
-Expr = { Float | Int | SExpr }
+Expr = { Float | Int | Bool | SExpr }
 
-// source_code.sol
-// ```
-// 123
-// 4.6
-// 25 26
-// ```
 Program = { SOI ~ Expr* ~ EOI }

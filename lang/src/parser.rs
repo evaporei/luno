@@ -40,6 +40,16 @@ fn parse_expr(expr: Pair<Rule>) -> Result<ast::Expr, String> {
         Rule::Float => Ok(ast::Expr::Float(
             expr.as_str().parse::<f64>().map_err(|e| e.to_string())?,
         )),
+        Rule::Bool => {
+            let expr_str = expr.as_str();
+            let b = match expr_str {
+                "true" => true,
+                "false" => false,
+                _ => return Err(format!("this ain't boolean: {expr_str}")),
+            };
+
+            Ok(ast::Expr::Bool(b))
+        }
         Rule::SExpr => {
             let mut sexpr = ast::SExpr::new();
 
