@@ -1,3 +1,5 @@
+pub type Symbol = String;
+
 pub type Character = char;
 
 pub type Int = i64;
@@ -10,6 +12,7 @@ pub type SExpr = Vec<Expr>;
 
 #[derive(Debug)]
 pub enum Expr {
+    Symbol(Symbol),
     String(String),
     Character(Character),
     Int(Int),

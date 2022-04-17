@@ -1,5 +1,11 @@
 WHITESPACE = _{ (" " | "\t" | "\r" | "\n" ) }
 
+// Symbol = @{ (Letter ~ Char*?) | (ArithmeticOps | ComparisonOps) }
+Symbol = @{ (Letter | ASCII_DIGIT | "_" | ArithmeticOps | ComparisonOps | "&")+ }
+Letter = { 'a' .. 'z' | 'A' .. 'Z' }
+ArithmeticOps = { "+" | "-" | "*" | "/" | "%" | "^" }
+ComparisonOps = { "=" | "<" | ">" | "!" }
+
 Character = { "\\" ~ Char }
 
 String = ${ "\"" ~ Inner ~ "\"" }
@@ -29,6 +35,6 @@ Bool = { "true" | "false" }
 
 SExpr = { "(" ~ Expr* ~ ")" }
 
-Expr = { String | Character | Float | Int | Bool | SExpr }
+Expr = { Float | Int | Bool | Character | Symbol | String | SExpr }
 
 Program = { SOI ~ Expr* ~ EOI }
