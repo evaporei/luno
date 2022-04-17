@@ -1,0 +1,26 @@
+WHITESPACE = _{ (" " | "\t" | "\r" | "\n" ) }
+
+// 42
+Int = @{
+    "-"?
+    ~ ("0" | ASCII_NONZERO_DIGIT ~ ASCII_DIGIT*)
+    ~ (^"e" ~ ("+" | "-")? ~ ASCII_DIGIT+)?
+}
+
+// 6.66
+Float = @{
+    "-"?
+    ~ ("0" | ASCII_NONZERO_DIGIT ~ ASCII_DIGIT*)
+    ~ ("." ~ ASCII_DIGIT*)
+    ~ (^"e" ~ ("+" | "-")? ~ ASCII_DIGIT+)?
+}
+
+Expr = { Float | Int }
+
+// source_code.sol
+// ```
+// 123
+// 4.6
+// 25 26
+// ```
+Program = { SOI ~ Expr* ~ EOI }

@@ -1,3 +1,5 @@
+use crate::parser::parse;
+
 pub struct State;
 
 impl State {
@@ -13,7 +15,9 @@ impl State {
 
     /// Compiles a line.
     // luaL_loadstring
-    pub fn load_line(&self, _line: &str) {}
+    pub fn load_line(&self, line: &str) {
+        let _ = dbg!(parse(line));
+    }
 
     /// Calls the compiled function.
     // lua_pcall
