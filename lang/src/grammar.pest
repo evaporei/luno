@@ -1,5 +1,7 @@
 WHITESPACE = _{ (" " | "\t" | "\r" | "\n" ) }
 
+Character = { "\\" ~ Char }
+
 String = ${ "\"" ~ Inner ~ "\"" }
 Inner = @{ Char* }
 Char = {
@@ -27,6 +29,6 @@ Bool = { "true" | "false" }
 
 SExpr = { "(" ~ Expr* ~ ")" }
 
-Expr = { String | Float | Int | Bool | SExpr }
+Expr = { String | Character | Float | Int | Bool | SExpr }
 
 Program = { SOI ~ Expr* ~ EOI }
