@@ -1,0 +1,1 @@
+[SExpr([Symbol("def"), Symbol("add-one"), SExpr([Symbol("fn"), SExpr([Symbol("x")]), SExpr([Symbol("+"), Int(1), Symbol("x")])])]), SExpr([Symbol("add-one"), Int(55)]), SExpr([Symbol("def"), Symbol("increment"), String("adds 1 to a number"), Symbol("add-one")])]

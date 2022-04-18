@@ -1,5 +1,7 @@
-(1.2 4)
+(def add-one (fn (x) (+ 1 x)))
 
-(3 9)
+(add-one 55);; 56
 
-(5 6.0)
+(def increment
+  "adds 1 to a number"
+  add-one)

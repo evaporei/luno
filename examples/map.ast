@@ -1,0 +1,1 @@
+[Map({Keyword("age"): Int(123), Keyword("name"): String("hm")}), Map({Float(OrderedFloat(4.5)): Int(5), Keyword("kasd"): Symbol("fkj/g")}), Map({Symbol("bla"): String("123"), Symbol("olha"): String("este")})]

@@ -10,7 +10,7 @@ pub struct Parser;
 pub fn parse(source: &str) -> Result<ast::Program, pest::error::Error<Rule>> {
     let pairs = Parser::parse(Rule::Program, source)?.next().unwrap();
 
-    println!("pairs: {:?}", pairs);
+    // println!("pairs: {:?}", pairs);
 
     let ast = match parse_program(pairs) {
         Ok(bb) => bb,

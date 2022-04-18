@@ -1,5 +1,5 @@
 mod ast;
-mod parser;
+pub mod parser;
 mod state;
 
 pub use parser::Parser;
