@@ -1,1 +1,17 @@
-[Float(OrderedFloat(6.66)), Float(OrderedFloat(9.0)), Float(OrderedFloat(55.96))]
+[
+    Float(
+        OrderedFloat(
+            6.66,
+        ),
+    ),
+    Float(
+        OrderedFloat(
+            9.0,
+        ),
+    ),
+    Float(
+        OrderedFloat(
+            55.96,
+        ),
+    ),
+]

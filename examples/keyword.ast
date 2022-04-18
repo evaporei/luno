@@ -1,1 +1,11 @@
-[Keyword("nice"), Keyword("very-nice"), Keyword("super/nice")]
+[
+    Keyword(
+        "nice",
+    ),
+    Keyword(
+        "very-nice",
+    ),
+    Keyword(
+        "super/nice",
+    ),
+]

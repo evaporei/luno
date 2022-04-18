@@ -1,1 +1,68 @@
-[List([Int(1), Int(2), Int(3), Int(4)]), List([Symbol("a"), String("b"), Keyword("c"), Character('d')]), List([Map({Keyword("age"): Int(123), Keyword("name"): String("hm")}), Map({Keyword("age"): Float(OrderedFloat(44.4)), Keyword("name"): String("mh")})])]
+[
+    List(
+        [
+            Int(
+                1,
+            ),
+            Int(
+                2,
+            ),
+            Int(
+                3,
+            ),
+            Int(
+                4,
+            ),
+        ],
+    ),
+    List(
+        [
+            Symbol(
+                "a",
+            ),
+            String(
+                "b",
+            ),
+            Keyword(
+                "c",
+            ),
+            Character(
+                'd',
+            ),
+        ],
+    ),
+    List(
+        [
+            Map(
+                {
+                    Keyword(
+                        "age",
+                    ): Int(
+                        123,
+                    ),
+                    Keyword(
+                        "name",
+                    ): String(
+                        "hm",
+                    ),
+                },
+            ),
+            Map(
+                {
+                    Keyword(
+                        "age",
+                    ): Float(
+                        OrderedFloat(
+                            44.4,
+                        ),
+                    ),
+                    Keyword(
+                        "name",
+                    ): String(
+                        "mh",
+                    ),
+                },
+            ),
+        ],
+    ),
+]

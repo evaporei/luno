@@ -1,6 +1,8 @@
 use sol_lang::parser::parse;
 use std::ffi::OsStr;
 use std::fs;
+// use std::fs::{self, File};
+// use std::io::Write;
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     println!("Parse source code into AST tests");
@@ -18,7 +20,9 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             let source_code = fs::read_to_string(path.clone())?;
 
             let ast = parse(&source_code)?;
-            let ast_dbg = format!("{:?}", ast);
+            let ast_dbg = format!("{:#?}", ast);
+            // let mut file = File::create(ast_ext)?;
+            // file.write_all(ast_dbg.as_bytes())?;
             let expected_ast = fs::read_to_string(ast_ext)?;
 
             assert_eq!(ast_dbg, expected_ast.trim());
