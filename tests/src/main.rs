@@ -1,4 +1,4 @@
-use sol_lang::parser::parse;
+use luno_lang::parser::parse;
 use std::ffi::OsStr;
 use std::fs;
 // use std::fs::{self, File};
@@ -7,12 +7,12 @@ use std::fs;
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     println!("Parse source code into AST tests");
     let paths = fs::read_dir("./examples").unwrap();
-    let sol_extension = OsStr::new("sol");
+    let luno_extension = OsStr::new("luno");
 
     for file in paths {
         let path = file?.path();
 
-        if matches!(path.extension(), Some(ext) if ext == sol_extension) {
+        if matches!(path.extension(), Some(ext) if ext == luno_extension) {
             println!("Running parse test for {:?}", path);
             let no_extension = path.file_stem().unwrap().to_str().unwrap();
             let ast_ext = format!("./examples/{no_extension}.ast");

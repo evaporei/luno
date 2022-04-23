@@ -1,5 +1,5 @@
 [package]
-name = "sol-repl"
+name = "luno-repl"
 version = "0.1.0"
 edition = "2021"
 
@@ -7,4 +7,4 @@ edition = "2021"
 
 [dependencies]
 rustyline = "9.1.2"
-sol-lang = { path = "../lang" }
+luno-lang = { path = "../lang" }

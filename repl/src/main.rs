@@ -1,9 +1,9 @@
 use rustyline::error::ReadlineError;
 use rustyline::Editor;
-use sol_lang::State as SolState;
+use luno_lang::State as SolState;
 
 fn main() {
-    println!("☀️  Sun lang 0.0.0");
+    println!("Luno lang 0.0.0");
 
     // TODO: add completer by replacing `()`
     let mut rl = Editor::<()>::new();
@@ -38,5 +38,5 @@ fn main() {
     }
     rl.save_history("history.txt").unwrap();
 
-    println!("☀️  Praise the sun \\o/");
+    println!("REPL finished \\o/");
 }

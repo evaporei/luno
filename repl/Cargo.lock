@@ -3,5 +3,5 @@
 version = 3
 
 [[package]]
-name = "sol-repl"
+name = "luno-repl"
 version = "0.1.0"
