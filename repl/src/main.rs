@@ -1,6 +1,6 @@
 use rustyline::error::ReadlineError;
 use rustyline::Editor;
-use luno_lang::State as SolState;
+use luno_lang::State as LunoState;
 
 fn main() {
     println!("Luno lang 0.0.0");
@@ -10,7 +10,7 @@ fn main() {
     // TODO: make history more robust?
     let _ = rl.load_history("history.txt");
 
-    let state = SolState::new();
+    let state = LunoState::new();
     state.load_std();
 
     loop {

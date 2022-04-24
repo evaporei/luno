@@ -3,13 +3,13 @@ use crate::parser::parse;
 pub struct State;
 
 impl State {
-    /// Initiates a Sol state.
+    /// Initiates a Luno state.
     // luaL_newstate
     pub fn new() -> Self {
         Self
     }
 
-    /// Loads the Sol's standard library into the State.
+    /// Loads the Luno's standard library into the State.
     // luaL_openlibs
     pub fn load_std(&self) {}
 
