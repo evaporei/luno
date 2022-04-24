@@ -1,6 +1,22 @@
 # luno
 
-Experimental embeddable scripting language based of [Lua's implementation document](https://www.lua.org/doc/jucs05.pdf).
+> el **lisp** number **uno**
+
+`luno` is the **one lisp** to **rule them all**.
+
+Still experimental, do not use it in production **yet**.
+
+## goals
+
+- embeddable
+- small size
+- simple
+- functional
+- faster than CL and Clojure
+- ergonomic to navigate data structures just as Clojure and other lisps
+- fast startup time
+- modular (only import/compile what you need)
+- great error messages/feedback loop
 
 ```
 $ cargo run -p luno-repl
