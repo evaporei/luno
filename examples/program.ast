@@ -1,4 +1,57 @@
 [
+    Def {
+        name: "add-one",
+        value: Lambda {
+            args: vec![Let("x")],
+            docs: "",
+            body: vec![FnCall()],
+        }
+                    SExpr(
+                        [
+                            Symbol(
+                                "+",
+                            ),
+                            Int(
+                                1,
+                            ),
+                            Symbol(
+                                "x",
+                            ),
+                        ],
+                    ),
+                ],
+            ),
+        ],
+    },
+    FnCall(
+        [
+            Symbol(
+                "add-one",
+            ),
+            Int(
+                55,
+            ),
+        ],
+    ),
+    Def(
+        [
+            Symbol(
+                "def",
+            ),
+            Symbol(
+                "increment",
+            ),
+            String(
+                "adds 1 to a number",
+            ),
+            Symbol(
+                "add-one",
+            ),
+        ],
+    ),
+]
+
+[
     SExpr(
         [
             Symbol(

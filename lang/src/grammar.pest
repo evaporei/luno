@@ -48,6 +48,10 @@ Map = {
     | "{" ~ Pair* ~ "}"
 }
 
+// Consider disambiguate into:
+// - def
+// - fn/lambda
+// - function call
 SExpr = { "(" ~ Expr* ~ ")" }
 
 Expr = {
